@@ -1,0 +1,123 @@
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Ayurveda-inspired design system */
+
+@layer base {
+  :root {
+    --background: 43 33% 96%; /* Soft ivory */
+    --foreground: 25 25% 20%; /* Warm earth */
+
+    --card: 43 33% 98%;
+    --card-foreground: 25 25% 20%;
+
+    --popover: 43 33% 98%;
+    --popover-foreground: 25 25% 20%;
+
+    --primary: 95 20% 45%; /* Sage green */
+    --primary-foreground: 43 33% 98%;
+
+    --secondary: 37 35% 70%; /* Sand */
+    --secondary-foreground: 25 25% 20%;
+
+    --muted: 43 20% 92%;
+    --muted-foreground: 25 15% 50%;
+
+    --accent: 35 30% 80%; /* Rose beige */
+    --accent-foreground: 25 25% 20%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 43 20% 88%;
+    --input: 43 20% 88%;
+    --ring: 95 20% 45%;
+
+    --radius: 1rem;
+
+    --sidebar-background: 43 33% 96%;
+    --sidebar-foreground: 25 25% 20%;
+    --sidebar-primary: 95 20% 45%;
+    --sidebar-primary-foreground: 43 33% 98%;
+    --sidebar-accent: 43 20% 92%;
+    --sidebar-accent-foreground: 25 25% 20%;
+    --sidebar-border: 43 20% 88%;
+    --sidebar-ring: 95 20% 45%;
+  }
+
+  .dark {
+    --background: 25 25% 10%;
+    --foreground: 43 33% 96%;
+
+    --card: 25 25% 12%;
+    --card-foreground: 43 33% 96%;
+
+    --popover: 25 25% 12%;
+    --popover-foreground: 43 33% 96%;
+
+    --primary: 95 25% 55%;
+    --primary-foreground: 25 25% 10%;
+
+    --secondary: 25 15% 20%;
+    --secondary-foreground: 43 33% 96%;
+
+    --muted: 25 15% 18%;
+    --muted-foreground: 43 15% 65%;
+
+    --accent: 25 15% 20%;
+    --accent-foreground: 43 33% 96%;
+
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 25 15% 20%;
+    --input: 25 15% 20%;
+    --ring: 95 25% 55%;
+
+    --sidebar-background: 25 25% 10%;
+    --sidebar-foreground: 43 33% 96%;
+    --sidebar-primary: 95 25% 55%;
+    --sidebar-primary-foreground: 25 25% 10%;
+    --sidebar-accent: 25 15% 18%;
+    --sidebar-accent-foreground: 43 33% 96%;
+    --sidebar-border: 25 15% 20%;
+    --sidebar-ring: 95 25% 55%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground font-nunito;
+  }
+}
+
+/* Smooth animations for scroll-triggered elements */
+@layer utilities {
+  .animate-on-scroll {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all 0.6s ease-out;
+  }
+
+  .animate-on-scroll.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .gradient-text {
+    background: linear-gradient(135deg, #7A9471, #8B7355);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .ayurveda-shadow {
+    box-shadow: 0 10px 40px rgba(122, 148, 113, 0.1);
+  }
+}

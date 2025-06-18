@@ -5,7 +5,7 @@ import { Label } from '@/components/ui/label';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { useAuth } from '@/hooks/useAuth';
-import { useToast } from '@/hooks/use-toast';
+import { useToast } from '@/components/ui/use-toast';
 import { Leaf, Mail, Lock, User } from 'lucide-react';
 
 const AuthForm = () => {
@@ -30,12 +30,12 @@ const AuthForm = () => {
     setIsLoading(true);
 
     try {
-      const { error } = await signIn(signInData.email, signInData.password);
+      const result = await signIn(signInData.email, signInData.password);
       
-      if (error) {
+      if (result.error) {
         toast({
           title: 'Error',
-          description: error.message,
+          description: result.error?.message || String(result.error) || 'Sign in failed',
           variant: 'destructive',
         });
       } else {
@@ -70,12 +70,12 @@ const AuthForm = () => {
     setIsLoading(true);
 
     try {
-      const { error } = await signUp(signUpData.email, signUpData.password, signUpData.fullName);
+      const result = await signUp(signUpData.email, signUpData.password, signUpData.fullName);
       
-      if (error) {
+      if (result.error) {
         toast({
           title: 'Error',
-          description: error.message,
+          description: result.error?.message || String(result.error) || 'Sign up failed',
           variant: 'destructive',
         });
       } else {

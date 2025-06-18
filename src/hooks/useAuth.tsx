@@ -1,4 +1,3 @@
-
 import { useEffect, useState } from 'react';
 import { User } from '@supabase/supabase-js';
 import { supabase } from '@/integrations/supabase/client';
@@ -38,7 +37,18 @@ export const useAuth = () => {
         },
       },
     });
-    return { data, error };
+    if (error || !data.user) {
+      return { data, error };
+    }
+    // Insert into profiles table
+    const { error: profileError } = await supabase.from('profiles').insert([
+      {
+        id: data.user.id,
+        email,
+        full_name: fullName,
+      },
+    ]);
+    return { data, error: error || profileError };
   };
 
   const signIn = async (email: string, password: string) => {

@@ -47,7 +47,7 @@ const Footer = () => {
         <div className="py-16">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-6 gap-8">
             {/* Brand Section */}
-            <div className="lg:col-span-2 space-y-6">
+            <div className="lg:col-span-2 space-y-6 lg:mx-auto text-left">
               <div className="flex items-center space-x-2">
                 <Leaf className="h-8 w-8 text-primary" />
                 <span className="text-xl font-bold gradient-text">Ayunova</span>
@@ -55,7 +55,6 @@ const Footer = () => {
               <p className="text-muted-foreground max-w-sm">
                 Bridging ancient Ayurvedic wisdom with modern AI technology to create personalized wellness solutions for the modern world.
               </p>
-              
               {/* Contact Info */}
               <div className="space-y-3">
                 <div className="flex items-center space-x-3 text-sm">
@@ -71,7 +70,6 @@ const Footer = () => {
                   <span>Mumbai, Maharashtra, India</span>
                 </div>
               </div>
-
               {/* Social Links */}
               <div className="flex space-x-3">
                 {socialLinks.map((social) => (

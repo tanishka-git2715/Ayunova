@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 import { Menu, X, Leaf } from 'lucide-react';
 import { useAuth } from '@/hooks/useAuth';
@@ -6,6 +7,7 @@ import { useAuth } from '@/hooks/useAuth';
 const Navigation = () => {
   const [isOpen, setIsOpen] = useState(false);
   const { user } = useAuth();
+  const navigate = useNavigate();
 
   const navItems = [
     { name: 'Home', href: '#home' },
@@ -17,9 +19,9 @@ const Navigation = () => {
 
   const handleGetStarted = () => {
     if (user) {
-      window.location.href = '/dashboard';
+      navigate('/dashboard');
     } else {
-      window.location.href = '/auth';
+      navigate('/auth');
     }
   };
 

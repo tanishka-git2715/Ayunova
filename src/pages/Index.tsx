@@ -5,17 +5,17 @@ import TestimonialsSection from '@/components/TestimonialsSection';
 import NewsletterSection from '@/components/NewsletterSection';
 import Footer from '@/components/Footer';
 
-const Index = () => {
+export default function Index() {
   return (
-    <div className="min-h-screen bg-background flex flex-col items-center justify-center text-center">
+    <div className="min-h-screen bg-background">
       <Navigation />
-      <HeroSection />
-      <FeaturesSection />
-      <TestimonialsSection />
-      <NewsletterSection />
+      <main className="flex-1">
+        <HeroSection />
+        <FeaturesSection />
+        <TestimonialsSection />
+        <NewsletterSection />
+      </main>
       <Footer />
     </div>
   );
-};
-
-export default Index;
+}

@@ -1,13 +1,34 @@
+import { useNavigate } from 'react-router-dom';
+import { useAuth } from '@/hooks/useAuth';
 import { Button } from '@/components/ui/button';
 import { ArrowRight, Sparkles, Heart, Leaf } from 'lucide-react';
 
 const HeroSection = () => {
+  const navigate = useNavigate();
+  const { user } = useAuth();
+
+  const handleGetStarted = () => {
+    if (user) {
+      navigate('/dashboard');
+    } else {
+      navigate('/auth');
+    }
+  };
+
+  const handleTakeQuiz = () => {
+    if (user) {
+      navigate('/dashboard');
+    } else {
+      navigate('/auth');
+    }
+  };
+
   return (
     <section id="home" className="min-h-screen flex items-center justify-center pt-16 bg-gradient-to-br from-ayurveda-ivory via-background to-ayurveda-rose/20">
       <div className="container mx-auto px-4">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
           {/* Left Content */}
-          <div className="space-y-8 animate-slide-in-left">
+          <div className="flex flex-col items-center justify-center text-center space-y-8 animate-slide-in-left min-h-[60vh]">
             <div className="space-y-4">
               <h1 className="text-4xl md:text-6xl font-bold leading-tight">
                 <span className="gradient-text">Heal Naturally</span>
@@ -16,18 +37,27 @@ const HeroSection = () => {
                 <br />
                 <span className="gradient-text">Ayurveda</span>
               </h1>
-              <p className="text-lg text-muted-foreground max-w-lg">
+              <p className="text-lg text-muted-foreground max-w-lg mx-auto">
                 Discover your unique constitution, get personalized wellness plans, and transform your health naturally with ancient wisdom and modern AI.
               </p>
             </div>
 
             {/* CTA Buttons */}
-            <div className="flex flex-col sm:flex-row gap-4 justify-center items-center text-center">
-              <Button size="lg" className="bg-primary hover:bg-primary/90 text-primary-foreground rounded-full px-8 py-3 group">
+            <div className="flex flex-col sm:flex-row gap-4 justify-center items-center text-center w-full">
+              <Button 
+                size="lg" 
+                className="bg-primary hover:bg-primary/90 text-primary-foreground rounded-full px-8 py-3 group"
+                onClick={handleTakeQuiz}
+              >
                 Take Prakriti Quiz
                 <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
               </Button>
-              <Button size="lg" variant="outline" className="rounded-full px-8 py-3 border-primary text-primary hover:bg-primary hover:text-primary-foreground">
+              <Button 
+                size="lg" 
+                variant="outline" 
+                className="rounded-full px-8 py-3 border-primary text-primary hover:bg-primary hover:text-primary-foreground"
+                onClick={handleGetStarted}
+              >
                 Start Your Plan
               </Button>
             </div>

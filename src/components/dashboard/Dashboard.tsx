@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { useAuth } from '@/hooks/useAuth';
+import { useWellness } from '@/hooks/useWellness';
 import { supabase } from '@/integrations/supabase/client';
 import { 
   Heart, 
@@ -13,7 +14,7 @@ import {
   LogOut,
   User
 } from 'lucide-react';
-import { useToast } from '@/hooks/use-toast';
+import { useToast } from '@/components/ui/use-toast';
 
 interface Profile {
   id: string;
@@ -23,6 +24,7 @@ interface Profile {
 
 const Dashboard = () => {
   const { user, signOut } = useAuth();
+  const { doshaAssessment, wellnessPlans, lifestyleLogs, insights } = useWellness();
   const { toast } = useToast();
   const [profile, setProfile] = useState<Profile | null>(null);
   const [loading, setLoading] = useState(true);
@@ -54,8 +56,13 @@ const Dashboard = () => {
   }, [user]);
 
   const handleSignOut = async () => {
-    const { error } = await signOut();
-    if (error) {
+    try {
+      await signOut();
+      toast({
+        title: 'Signed out',
+        description: 'You have been successfully signed out',
+      });
+    } catch (error) {
       toast({
         title: 'Error',
         description: 'Failed to sign out',
@@ -82,7 +89,8 @@ const Dashboard = () => {
       icon: Brain,
       color: 'text-blue-600',
       bgColor: 'bg-blue-50',
-      action: 'Take Assessment',
+      action: doshaAssessment ? 'View Results' : 'Take Assessment',
+      completed: !!doshaAssessment,
     },
     {
       title: 'Wellness Plan',
@@ -90,7 +98,8 @@ const Dashboard = () => {
       icon: Heart,
       color: 'text-red-600',
       bgColor: 'bg-red-50',
-      action: 'View Plan',
+      action: wellnessPlans.length > 0 ? 'View Plans' : 'Create Plan',
+      completed: wellnessPlans.length > 0,
     },
     {
       title: 'Lifestyle Tracking',
@@ -99,6 +108,7 @@ const Dashboard = () => {
       color: 'text-green-600',
       bgColor: 'bg-green-50',
       action: 'Log Today',
+      completed: lifestyleLogs.length > 0,
     },
     {
       title: 'AyurGPT Chat',
@@ -107,6 +117,7 @@ const Dashboard = () => {
       color: 'text-purple-600',
       bgColor: 'bg-purple-50',
       action: 'Start Chat',
+      completed: false,
     },
     {
       title: 'Consultations',
@@ -115,6 +126,7 @@ const Dashboard = () => {
       color: 'text-orange-600',
       bgColor: 'bg-orange-50',
       action: 'Book Now',
+      completed: false,
     },
   ];
 
@@ -135,7 +147,7 @@ const Dashboard = () => {
               <div className="text-right">
                 <p className="text-sm font-medium">{profile?.full_name || 'Welcome'}</p>
                 <p className="text-xs text-muted-foreground">
-                  {profile?.constitution_type ? `${profile.constitution_type} Constitution` : 'Complete assessment to see your dosha'}
+                  {doshaAssessment?.primary_dosha ? `${doshaAssessment.primary_dosha} Constitution` : 'Complete assessment to see your dosha'}
                 </p>
               </div>
               <Button variant="outline" size="icon" onClick={handleSignOut}>
@@ -171,6 +183,9 @@ const Dashboard = () => {
                     </div>
                     <div>
                       <CardTitle className="text-lg">{card.title}</CardTitle>
+                      {card.completed && (
+                        <div className="text-xs text-green-600 font-medium">✓ Completed</div>
+                      )}
                     </div>
                   </div>
                 </CardHeader>
@@ -191,23 +206,58 @@ const Dashboard = () => {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
           <Card>
             <CardContent className="p-6 text-center">
-              <div className="text-2xl font-bold text-primary">0</div>
+              <div className="text-2xl font-bold text-primary">
+                {doshaAssessment ? 1 : 0}
+              </div>
               <div className="text-sm text-muted-foreground">Assessments Completed</div>
             </CardContent>
           </Card>
           <Card>
             <CardContent className="p-6 text-center">
-              <div className="text-2xl font-bold text-primary">0</div>
-              <div className="text-sm text-muted-foreground">Days Tracked</div>
+              <div className="text-2xl font-bold text-primary">
+                {wellnessPlans.length}
+              </div>
+              <div className="text-sm text-muted-foreground">Wellness Plans</div>
             </CardContent>
           </Card>
           <Card>
             <CardContent className="p-6 text-center">
-              <div className="text-2xl font-bold text-primary">0</div>
-              <div className="text-sm text-muted-foreground">Consultations</div>
+              <div className="text-2xl font-bold text-primary">
+                {lifestyleLogs.length}
+              </div>
+              <div className="text-sm text-muted-foreground">Days Tracked</div>
             </CardContent>
           </Card>
         </div>
+
+        {/* Recent Activity */}
+        {lifestyleLogs.length > 0 && (
+          <div className="mt-8">
+            <h3 className="text-xl font-semibold mb-4">Recent Activity</h3>
+            <Card>
+              <CardContent className="p-6">
+                <div className="space-y-3">
+                  {lifestyleLogs.slice(0, 5).map((log, index) => (
+                    <div key={index} className="flex items-center justify-between py-2 border-b border-border last:border-b-0">
+                      <div>
+                        <p className="font-medium">{new Date(log.log_date).toLocaleDateString()}</p>
+                        <p className="text-sm text-muted-foreground">
+                          Sleep: {log.sleep_hours || 0}h, Energy: {log.energy_level || 0}/10
+                        </p>
+                      </div>
+                      <div className="text-right">
+                        <p className="text-sm font-medium">Mood: {log.mood || 0}/10</p>
+                        <p className="text-sm text-muted-foreground">
+                          Exercise: {log.exercise_minutes || 0}min
+                        </p>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </CardContent>
+            </Card>
+          </div>
+        )}
       </main>
     </div>
   );

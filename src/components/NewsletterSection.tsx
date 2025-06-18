@@ -1,4 +1,3 @@
-
 import { useState } from 'react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
@@ -17,7 +16,7 @@ const NewsletterSection = () => {
     // Simulate API call
     setTimeout(() => {
       toast({
-        title: "Welcome to Aarogya Vatika! 🌿",
+        title: "Welcome to Ayunova! 🌿",
         description: "You'll receive weekly wellness tips and exclusive Ayurvedic insights.",
       });
       setEmail('');

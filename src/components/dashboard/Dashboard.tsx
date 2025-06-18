@@ -1,4 +1,3 @@
-
 import { useState, useEffect } from 'react';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
@@ -128,7 +127,7 @@ const Dashboard = () => {
             <div className="flex items-center space-x-3">
               <Leaf className="h-8 w-8 text-primary" />
               <div>
-                <h1 className="text-xl font-bold gradient-text">Aarogya Vatika</h1>
+                <h1 className="text-xl font-bold gradient-text">Ayunova</h1>
                 <p className="text-sm text-muted-foreground">Your Wellness Dashboard</p>
               </div>
             </div>

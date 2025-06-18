@@ -1,4 +1,3 @@
-
 import { useState } from 'react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
@@ -102,7 +101,7 @@ const AuthForm = () => {
         <CardHeader className="text-center">
           <div className="flex items-center justify-center space-x-2 mb-4">
             <Leaf className="h-8 w-8 text-primary" />
-            <span className="text-2xl font-bold gradient-text">Aarogya Vatika</span>
+            <span className="text-2xl font-bold gradient-text">Ayunova</span>
           </div>
           <CardTitle>Welcome to Your Wellness Journey</CardTitle>
           <CardDescription>

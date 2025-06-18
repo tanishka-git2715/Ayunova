@@ -1,4 +1,3 @@
-
 import { useState, useEffect } from 'react';
 import { Card, CardContent } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
@@ -12,7 +11,7 @@ const TestimonialsSection = () => {
       name: 'Priya Sharma',
       role: 'Software Engineer',
       image: 'https://images.unsplash.com/photo-1494790108755-2616b612b5e5?w=100&h=100&fit=crop&crop=face',
-      content: 'Aarogya Vatika transformed my digestive health completely. The personalized Pitta-balancing plan worked like magic. I feel more energetic and balanced than ever before.',
+      content: 'Ayunova transformed my digestive health completely. The personalized Pitta-balancing plan worked like magic. I feel more energetic and balanced than ever before.',
       rating: 5,
       dosha: 'Pitta Dominant'
     },

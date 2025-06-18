@@ -1,4 +1,3 @@
-
 import { Leaf, Mail, Phone, MapPin, Facebook, Twitter, Instagram, Youtube } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 
@@ -51,7 +50,7 @@ const Footer = () => {
             <div className="lg:col-span-2 space-y-6">
               <div className="flex items-center space-x-2">
                 <Leaf className="h-8 w-8 text-primary" />
-                <span className="text-xl font-bold gradient-text">Aarogya Vatika</span>
+                <span className="text-xl font-bold gradient-text">Ayunova</span>
               </div>
               <p className="text-muted-foreground max-w-sm">
                 Bridging ancient Ayurvedic wisdom with modern AI technology to create personalized wellness solutions for the modern world.
@@ -61,7 +60,7 @@ const Footer = () => {
               <div className="space-y-3">
                 <div className="flex items-center space-x-3 text-sm">
                   <Mail className="h-4 w-4 text-primary" />
-                  <span>hello@aarogyavatika.com</span>
+                  <span>hello@ayunova.com</span>
                 </div>
                 <div className="flex items-center space-x-3 text-sm">
                   <Phone className="h-4 w-4 text-primary" />
@@ -165,7 +164,7 @@ const Footer = () => {
         <div className="py-6 border-t border-border">
           <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
             <div className="text-sm text-muted-foreground">
-              © 2024 Aarogya Vatika. All rights reserved. Made with 💚 for your wellness.
+              © 2024 Ayunova. All rights reserved. Made with 💚 for your wellness.
             </div>
             
             <div className="flex items-center space-x-6">

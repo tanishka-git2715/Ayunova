@@ -1,6 +1,6 @@
-# Aarogya Vatika — AI-Powered Ayurvedic Wellness Platform
+# Ayunova — AI-Powered Ayurvedic Wellness Platform
 
-**Aarogya Vatika** is an intelligent operating system that combines the timeless science of Ayurveda with the power of modern AI. It personalizes wellness routines—including diet, herbs, exercise, and mental well-being—based on your *prakriti*, prescriptions, symptoms, and lifestyle.
+**Ayunova** is an intelligent operating system that combines the timeless science of Ayurveda with the power of modern AI. It personalizes wellness routines—including diet, herbs, exercise, and meditation—based on your unique dosha constitution and current imbalances.
 
 ---
 
@@ -64,7 +64,15 @@ aarogya-vatika/
 ```
 ---
 
-Live Demo
-The project is live and hosted on Netlify: 🔗 https://aarogyavatika.netlify.app/
+## 🚀 Quick Start
+
+```bash
+# Clone the repository
+git clone https://github.com/your-username/ayunova.git
+
+# Navigate to the project directory
+cd ayunova/
+
+The project is live and hosted on Netlify: 🔗 https://ayunova.netlify.app/
 
 ---

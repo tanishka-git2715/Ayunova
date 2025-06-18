@@ -1,4 +1,3 @@
-
 import { useState } from 'react';
 import { Button } from '@/components/ui/button';
 import { Menu, X, Leaf } from 'lucide-react';
@@ -31,7 +30,7 @@ const Navigation = () => {
           {/* Logo */}
           <div className="flex items-center space-x-2">
             <Leaf className="h-8 w-8 text-primary" />
-            <span className="text-xl font-bold gradient-text">Aarogya Vatika</span>
+            <span className="text-xl font-bold gradient-text">Ayunova</span>
           </div>
 
           {/* Desktop Navigation */}

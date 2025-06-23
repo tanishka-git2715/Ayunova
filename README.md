@@ -4,12 +4,6 @@
 
 ---
 
-## Vision
-
-To make Ayurveda digital, dynamic, and data-driven—empowering users to heal holistically with science-backed tradition.
-
----
-
 ## Features
 
 - **Prakriti Profiler** – AI-based dosha identification (via quiz + image analysis)

@@ -1,4 +1,4 @@
-# Ayunova — AI-Powered Ayurvedic Wellness Platform
+# Ayunova — AI-powered ayurvedic wellness platform
 
 **Ayunova** is an intelligent operating system that combines the timeless science of Ayurveda with the power of modern AI. It personalizes wellness routines—including diet, herbs, exercise, and meditation—based on your unique dosha constitution and current imbalances.
 

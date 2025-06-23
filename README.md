@@ -40,7 +40,7 @@ To make Ayurveda digital, dynamic, and data-driven—empowering users to heal ho
 
 ## Project Structure
 ```
-aarogya-vatika/
+ayunova/
 ├── public/                    # Static assets (images, fonts, etc.)
 ├── src/                       # Application source code
 │   ├── components/            # Reusable UI components
